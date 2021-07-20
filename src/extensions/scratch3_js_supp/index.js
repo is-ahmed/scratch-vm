@@ -1,5 +1,4 @@
 const formatMessage = require("format-message");
-const { __esModule } = require("scratch-l10n");
 
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
@@ -37,22 +36,50 @@ class Scratch3JavascriptBlocks {
                 id: 'javascript.categoryName',
                 default: 'Javascript',
                 description: 'Name of the Javascript extension'
-            }),
+            }), 
             blockIconURL: blockIconURL,
             menuIconURL: menuIconURL,
             blocks: [
                 {
                     opcode: 'runAndWait',
-                    text: formatMessage({
-                        id: 'javascript.runAndWaitBlock',
-                        default: 'speak [WORDS]',
-                        description: 'Execute the following javascript.'
-                    }),
+                    text: 'run [CODE]', 
                     blockType: BlockType.COMMAND,
                     arguments: {
-                        WORDS: {
+                        TEXT: {
                             type: ArgumentType.STRING,
-                            defaultValue: null
+                            defaultValue: 'hello'
+                        }
+                    }
+                },
+                {
+                    opcode: 'ifAndThen',
+                    text: 'if [CONDITION] then [CODE]',
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        CONDITION: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'y == 1;'
+                        },
+
+                        CODE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'let z=1;'
+                        }
+                    }
+                },
+                {
+                    opcode: 'whileDo',
+                    text: 'while [CONDITION] do [CODE]',
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        CONDITION: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'y == 1;'
+                        },
+
+                        CODE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'let z=1;'
                         }
                     }
                 }
@@ -61,4 +88,4 @@ class Scratch3JavascriptBlocks {
         }
     }
 }
-__esModule.exports = Scratch3JavascriptBlocks
+module.exports = Scratch3JavascriptBlocks
