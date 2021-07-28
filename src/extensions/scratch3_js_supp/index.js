@@ -25,6 +25,29 @@ class Scratch3JavascriptBlocks {
         this.runtime = runtime;
     }
 
+
+
+    /**
+     * Convert the provided text into runnable javascript 
+     * @param {object} args Block arguments
+     */
+    runAndWait (args) {
+        let code = Cast.toString(args.CODE);
+        eval(code); 
+    }
+
+    /**
+     * Convert the provided text into runnable javascript 
+     * @param {object} args Block arguments 
+     */
+    ifAndThen(args) {
+
+        let condition = Cast.toString(args.CONDITION);
+        let code = Cast.toString(args.CODE);
+        
+        
+    }
+
     /**
      * @returns {object} metadata for this extension
      * and its blocks
@@ -45,9 +68,9 @@ class Scratch3JavascriptBlocks {
                     text: 'run [CODE]', 
                     blockType: BlockType.COMMAND,
                     arguments: {
-                        TEXT: {
+                        CODE: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'hello'
+                            defaultValue: 'console.log("Hello World");'
                         }
                     }
                 },
@@ -58,7 +81,7 @@ class Scratch3JavascriptBlocks {
                     arguments: {
                         CONDITION: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'y == 1;'
+                            defaultValue: 'hello'
                         },
 
                         CODE: {
@@ -68,7 +91,7 @@ class Scratch3JavascriptBlocks {
                     }
                 },
                 {
-                    opcode: 'whileDo',
+                    opcode: 'whileAndDo',
                     text: 'while [CONDITION] do [CODE]',
                     blockType: BlockType.COMMAND,
                     arguments: {
